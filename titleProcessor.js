@@ -25,7 +25,8 @@ async function processTitles(pathTitles, pathProcessed, regExp) {
 
 async function processFile(fileName, pathTitles, pathProcessed, regExp) {
     const titles = await fs.readFile(pathTitles+fileName, 'utf-8')
-    const snumbers = titles.match(regExp).join('\n')
+    const snumbers = titles.match(regExp)?.join('\n') || ''
+    //if (titles.match(regExp) == null) snumbers = ''
     await fs.writeFile(pathProcessed+fileName, snumbers)
 }
 
