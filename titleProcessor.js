@@ -10,7 +10,8 @@
 const vendor = 'audi'
 const pathTitles = `./${vendor}/`
 const pathProcessed = `./${vendor}/processed/`
-const regExpAudiAndBosch = /\b\d\w\w\d{3}\d{3}[a-zA-Z]?[a-zA-Z]?\b|\d{10}/g
+// const regExpAudiAndBosch = /\b\d\w\w\d{3}\d{3}[a-zA-Z]?[a-zA-Z]?\b|\d{10}/g //audi
+const regExpAudiAndBosch = /\b(\d{10,11}|\d{4}\w\d{5}|\d{6}-\d{4}|\d{7})\b/g //bmw
 const fs = require('fs').promises
 
 processTitles(pathTitles, pathProcessed, regExpAudiAndBosch)

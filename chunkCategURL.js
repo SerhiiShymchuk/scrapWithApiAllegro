@@ -8,7 +8,7 @@
 // інакше визначаємо середню ціну між мінімальною і максимальною
 // робимо 2 запити на відповідні проміжки (min<середина<max)
 // робмио рекурсію для повтору операцій
-const car = 'audi'
+const car = 'bmw'
 const categoryID = '620'
 const url = `https://api.allegro.pl/offers/listing?phrase=${car}&category.id=`
 const min = 50
@@ -47,10 +47,14 @@ async function splitChunk(request, url, categoryID, min, max, urlChunks) {
             }
         } else {
             const avg = +((max+min)/2).toFixed(2)
+            if (avg == min || avg == max ) {
+                urlChunks.push(fullUrl)
+                return
+            }
             console.log(avg)
-            await sleep(100)
+            await sleep(80)
             await splitChunk(request, url, categoryID, min, avg, urlChunks)
-            await sleep(100)
+            await sleep(80)
             await splitChunk(request, url, categoryID, avg, max, urlChunks)
         }
     } else {

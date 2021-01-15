@@ -20,5 +20,5 @@ async function unique(path, fileName) {
     const set = new Set(snumbers)
     const uniqueNumbers = [...set].join('\n')
     await fs.writeFile(path+fileName, uniqueNumbers, 'utf-8')
-    fileNames.forEach(fileName => fs.unlink(path+fileName))
+    //fileNames.forEach(fileName => fs.unlink(path+fileName))
 }

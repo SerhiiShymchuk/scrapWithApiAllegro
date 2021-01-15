@@ -13,7 +13,7 @@ const fetch = require('node-fetch')
 const sleep = require('util').promisify(setTimeout)
 const fileName = './urlChunks.txt'
 const path = './audi'
-const offset = 1362
+const offset = 0
 
 function request(url) {
     return fetch(url, {
