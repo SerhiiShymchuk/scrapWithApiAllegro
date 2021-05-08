@@ -3,7 +3,7 @@ const fetch = require('node-fetch')
 const fs = require('fs').promises
 const sleep = require('util').promisify(setTimeout)
 // шлях для обробки файлу
-const pathForCheck = './audi/checkSnumbers/'
+const pathForCheck = './mercedes/checkSnumbers/'
 
 // прочитати з ориг номерами
 // пройтися циклом і на кожен рядок зробити запит в апішку
@@ -24,11 +24,12 @@ function request(url) {
 
 async function checkCountProduct(request, path) {
     let filenames = await fs.readdir(path, 'utf-8')
+    filenames = filenames.filter(name => name != 'counted')
     filenames = filenames.map(name => name.replace('.txt', '')).sort((a,b) => a-b).map(name => name+'.txt')
-    for (let k = 0; k < filenames.length-1; k++) {
+    for (let k = 302; k <= filenames.length-1; k++) {
                 
         const sNumbers = await fs.readFile(path+filenames[k], 'utf-8')
-        const arrayOfNumbers = sNumbers.split('\n')
+        const arrayOfNumbers = sNumbers.split(/\r?\n/g)
         let arrayOfNumbersWithCount = []
         for (let i = 0; i < arrayOfNumbers.length; i++) {
             await sleep(75)
@@ -40,8 +41,9 @@ async function checkCountProduct(request, path) {
             }
             const totalCount = responce.searchMeta.totalCount
             arrayOfNumbersWithCount.push(arrayOfNumbers[i] + '=' + totalCount)
+            console.log(arrayOfNumbers[i] + '=' + totalCount)
         }
-        fs.writeFile(path+'/counted/'+filenames[k], arrayOfNumbersWithCount.join('\n'), 'utf-8')
+        fs.writeFile(path+'counted/'+filenames[k], arrayOfNumbersWithCount.join('\n'), 'utf-8')
         console.log(k)
     }
 }

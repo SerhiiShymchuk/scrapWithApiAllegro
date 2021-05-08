@@ -5,7 +5,7 @@
 зробити унікалізацію
 записати результат у новий файл
 */
-const vendor = 'audi'
+const vendor = 'mercedes'
 const fileName = 'unique.txt'
 const pathProcessed = `./${vendor}/processed/`
 const fs = require('fs').promises

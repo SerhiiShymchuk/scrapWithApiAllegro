@@ -1,9 +1,9 @@
 const fs = require('fs').promises
-const pathForSaving = './audi/checkSnumbers/'
-const pathForReading = './audi/processed/unique.txt'
+const pathForSaving = './mercedes/checkSnumbers/'
+const pathForReading = './mercedes/processed/unique.txt'
 // читаю файл 
 // записую дані з оперативної памяті в масив
-// ітеруюсь по масиву і після кожної тисячної ітерації зберігаю результат у файл
+// ітеруюсь по масиву і після кожної двохсотої ітерації зберігаю результат у файл
 
 slicer(pathForSaving, pathForReading)
 async function slicer(pathForSaving, pathForReading) {

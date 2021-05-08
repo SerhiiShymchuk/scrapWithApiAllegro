@@ -7,11 +7,12 @@
 записати результати у папці процесд в якийсь файл текстовий
 */ 
 
-const vendor = 'audi'
+const vendor = 'mercedes'
 const pathTitles = `./${vendor}/`
 const pathProcessed = `./${vendor}/processed/`
 // const regExpAudiAndBosch = /\b\d\w\w\d{3}\d{3}[a-zA-Z]?[a-zA-Z]?\b|\d{10}/g //audi
-const regExpAudiAndBosch = /\b(\d{10,11}|\d{4}\w\d{5}|\d{6}-\d{4}|\d{7})\b/g //bmw
+//const regExpAudiAndBosch = /\b(\d{10,11}|\d{4}\w\d{5}|\d{6}-\d{4}|\d{7})\b/g //bmw
+const regExpAudiAndBosch = /\b[aA]?\d{10}|\d{6}-\d{4}\b/g //mercedes
 const fs = require('fs').promises
 
 processTitles(pathTitles, pathProcessed, regExpAudiAndBosch)

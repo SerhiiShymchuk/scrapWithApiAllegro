@@ -11,8 +11,8 @@ const token = require('./token.js')
 const fs = require('fs').promises
 const fetch = require('node-fetch')
 const sleep = require('util').promisify(setTimeout)
-const fileName = './urlChunks.txt'
-const path = './audi'
+const fileName = `./mercedes/urlChunks.txt`
+const path = './mercedes'
 const offset = 0
 
 function request(url) {
