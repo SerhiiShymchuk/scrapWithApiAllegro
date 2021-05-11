@@ -2,7 +2,7 @@
 // перебрати масив і зберегти вміст всіх файлів в 1 файл
 const fs = require('fs').promises
 //const pathForReading = './audi/checkSnumbers/counted/'
-const pathForReading = './mercedes/checkSnumbers/counted/'
+const pathForReading = './renault/checkSnumbers/counted/'
 const fileNameForSaving = 'joined.txt'
 
 joiner(pathForReading, fileNameForSaving)

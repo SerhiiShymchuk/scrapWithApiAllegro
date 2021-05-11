@@ -3,7 +3,7 @@ const fetch = require('node-fetch')
 const fs = require('fs').promises
 const sleep = require('util').promisify(setTimeout)
 // шлях для обробки файлу
-const pathForCheck = './mercedes/checkSnumbers/'
+const pathForCheck = './renault/checkSnumbers/'
 
 // прочитати з ориг номерами
 // пройтися циклом і на кожен рядок зробити запит в апішку
@@ -26,13 +26,13 @@ async function checkCountProduct(request, path) {
     let filenames = await fs.readdir(path, 'utf-8')
     filenames = filenames.filter(name => name != 'counted')
     filenames = filenames.map(name => name.replace('.txt', '')).sort((a,b) => a-b).map(name => name+'.txt')
-    for (let k = 302; k <= filenames.length-1; k++) {
+    for (let k = 0; k <= filenames.length-1; k++) {
                 
         const sNumbers = await fs.readFile(path+filenames[k], 'utf-8')
         const arrayOfNumbers = sNumbers.split(/\r?\n/g)
         let arrayOfNumbersWithCount = []
         for (let i = 0; i < arrayOfNumbers.length; i++) {
-            await sleep(75)
+            await sleep(70)
             const responce = await request(`https://api.allegro.pl/offers/listing?category.id=620&phrase=${arrayOfNumbers[i]}&fallback=false`)
             if (!responce.searchMeta) {
                 await sleep(200)

@@ -11,8 +11,8 @@ const token = require('./token.js')
 const fs = require('fs').promises
 const fetch = require('node-fetch')
 const sleep = require('util').promisify(setTimeout)
-const fileName = `./mercedes/urlChunks.txt`
-const path = './mercedes'
+const fileName = `./ford/urlChunks.txt`
+const path = './ford'
 const offset = 0
 
 function request(url) {
@@ -54,4 +54,4 @@ async function getDataChunk(request, url, path, i) {
 }
 
 getDataChunks(fileName, request, path).then(console.log)
-setTimeout(console.log, 1e8)
+//setTimeout(console.log, 1e8)

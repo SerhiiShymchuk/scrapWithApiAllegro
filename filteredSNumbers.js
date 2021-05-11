@@ -4,7 +4,7 @@
 // записую фільтрований масив у рядок, а рядок у файл
 const fs = require('fs').promises
 //const pathForReading = './audi/checkSnumbers/counted/'
-const pathForReading = './mercedes/checkSnumbers/counted/'
+const pathForReading = './renault/checkSnumbers/counted/'
 const fileNameForReading = 'joined.txt'
 const fileNameForSaving = 'filteredNumbers.txt'
 const regExpFilter = /.+(?==(\d\d|8|9))/g // =8 і більше

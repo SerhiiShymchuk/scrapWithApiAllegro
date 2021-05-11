@@ -1,6 +1,6 @@
 const fs = require('fs').promises
-const pathForSaving = './mercedes/checkSnumbers/'
-const pathForReading = './mercedes/processed/unique.txt'
+const pathForSaving = './renault/checkSnumbers/'
+const pathForReading = './renault/processed/unique.txt'
 // читаю файл 
 // записую дані з оперативної памяті в масив
 // ітеруюсь по масиву і після кожної двохсотої ітерації зберігаю результат у файл
@@ -13,5 +13,7 @@ async function slicer(pathForSaving, pathForReading) {
         const slicedSnumbers = splittedSnumbers.slice(i, i+200)
         await fs.writeFile(pathForSaving+(i/200)+'.txt', slicedSnumbers.join('\n'), 'utf-8')
     }
+    console.log('done')
+    
 }
 
